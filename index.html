@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 
+'http://www.w3.org/TR/html4/loose.dtd'>  
+ 
+<!--   
+NOMBRE DEL SCRIPT: GEO_01.htm 
+REALIZACIÓN INFORMÁTICA: Christian VIGOUROUX 
+FECHA DE CREACIÓN: 15/10/2018 
+FECHA DE ÚLTIMA MODIFICACIÓN: 15/10/2018 
+OBJETIVO: Gestión Google Map - Mapa del centro de España 
+(centrado en Madrid) --> 
+ 
+<!-- Inicio script HTML --> 
+<html> 
+     
+   <!-- Inicio encabezado script HTML --> 
+   <head> 
+         
+      <!-- Etiqueta meta http-equiv & content --> 
+      <meta http-equiv='Content-Type' content='text/html; charset=utf-8' /> 
+        
+      <!-- Etiqueta meta que define la zona visualizable --> 
+      <meta name='viewport' content='initial-scale=1.0, user-scalable=yes'/> 
+      <!-- NB: El meta tag viewport indica al navegador el comportamiento 
+      que debe adoptar para mostrar una página --> 
+      <!--      initial-scale=1.0: Apertura de la página 
+      con una escala del 100 % --> 
+      <!--      user-scalable=yes: Funcionalidad 
+      de zoom posible para el usuario --> 
+      
+      <!-- Hoja de estilos CSS --> 
+      <style type='text/css'> 
+        
+          html, body, #mi Mapa  
+          {  
+              margin: 0; 
+              padding: 0; 
+              height: 80%; 
+          }  
+        
+      </style> 
+        
+      <!-- Título del script HTML --> 
+      <title>GEO_01</title> 
+        
+      <!-- Llamada al API Google Maps --> 
+      <script type='text/javascript'   
+      src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCvAGM2vORo55D5VwysJTOdxCd-bZpxPx4&libraries=places,drawing&v=3'>
+    //   https://maps.googleapis.com/maps/api/js?key=mi_mapa_api_google_map'> 
+      </script> 
+        
+      <!-- Script JavaScript para implementar el mapa -->  
+      <script type='text/javascript'> 
+            
+         /* Función de inicialización del mapa */ 
+         function inicializarMapa() 
+         {  
+                
+             /* Comprobación para saber si el navegador soporta el API de 
+             geolocalización (W3C) */ 
+             if (!navigator.geolocation) 
+             {  
+                /* Mensaje de alerta */ 
+                alert('Su navegador no gestiona la geolocalización'); 
+             /* valor de retorno */ 
+             return false 
+             }  
+              
+             /* Definición de la posición de centrado del mapa 
+             (centrada en la ciudad de Madrid) */ 
+             var centreGoogleMap =   
+             new google.maps.LatLng( -72.000000, 4.0000000); 
+              
+             /* Definición de las opciones del mapa */ 
+             var optionsGoogleMap = 
+             {  
+                 /* Factor de zoom */ 
+                 zoom: 8,  
+                 /* Punto de centrado */ 
+                 center: centreGoogleMap, 
+                 /* Modo de visualización del mapa (vista mapa de carreteras) */ 
+                 /* NB: google.maps.mapTypeId.ROADMAP   -> Modo Plano */ 
+                 /* google.maps.mapTypeId.SATELLITE     -> Modo Satélite */ 
+                 /* google.maps.mapTypeId.HYBRID        -> Modo Mixto 
+(Plano/Satélite) */ 
+                 /* google.maps.mapTypeId.TERRAIN       -> Modo Relieve */ 
+                 mapTypeId: google.maps.MapTipoId.ROADMAP 
+            }  
+             
+            /* Ubicación del mapa en la capa mi Mapa */  
+            var miMapa =   
+            new google.maps.Map(document.getElementById('mi Mapa'), 
+            optionsGoogleMap);  
+           
+        }  
+         
+     </script> 
+       
+   </head> 
+     
+   <!-- Inicio sección body del script HTML --> 
+   <body onload='inicializarMapa()'> 
+      
+      <!-- Título del procesamiento --> 
+      <h1>Ediciones ENI - JavaScript - GEO_01</h1> 
+      
+      <!-- Inicio script JavaScript --> 
+      <script type='text/javascript'>  
+     
+         /* Visualización del nombre del script */ 
+         alert('GEO_01');  
+           
+      </script>  
+       
+      <!-- Definición de la capa en la que se mostrará el mapa --> 
+      <div id='mi Mapa' style='width:100%; height:100%'></div> 
+       
+      <!-- Mensaje a los usuarios con un navegador sin JavaScript --> 
+      <noscript>  
+         <p>Observación importante:</p>  
+         <p>Para utilizar un mapa de tipo Google Maps, 
+         JavaScript, tiene que estar activado en su navegador.</p> 
+      </noscript> 
+       
+      
+   </body> 
+ 
+</html>
